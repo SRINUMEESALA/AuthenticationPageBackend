@@ -1,0 +1,17 @@
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email":"srinusri76585@gmail.com",
+    "password":"krishna"
+}
+
+###
+POST http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "email":"kridhna@gmail.com",
+    "password":"krishna",
+    "name":"krishna"
+}
