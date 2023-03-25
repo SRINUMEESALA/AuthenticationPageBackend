@@ -11,6 +11,7 @@ const verifylogin = async (request, response) => {
       email: userData.email,
       password: userData.password,
     });
+
     if (isValidUser !== null) {
       let jwtToken = jwt.sign({ email: userData.email }, "krishnaCode");
       response.status(200);
