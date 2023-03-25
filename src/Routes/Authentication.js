@@ -44,7 +44,41 @@ const registerUser = async (request, response) => {
   }
 };
 
+const resetPassword = async (request, response) => {
+  const forgotPassword = JSON.parse(request.query.forgotPassword);
+
+  const userData = request.body;
+  console.log("Accessed Forgot password API");
+  try {
+    switch (true) {
+      case forgotPassword:
+        const updateStatus = await User.updateOne(
+          { email: userData.email },
+          { password: userData.newPassword }
+        );
+        // console.log(updateStatus, userData);
+        if (updateStatus.acknowledged) {
+          response.status(200);
+          response.send({ mgs: "Password updated Successfully" });
+        } else {
+          response.status(400);
+          response.send({ mgs: "Password updation failed" });
+        }
+
+        break;
+
+      default:
+        break;
+    }
+  } catch (error) {
+    console.log(error);
+    response.status(500);
+    response.send({ mgs: "Something went wrong!" });
+  }
+};
+
 AuthenticationRoute.post("/login", verifylogin);
 AuthenticationRoute.post("/register", registerUser);
+AuthenticationRoute.post("/user", resetPassword);
 
 export default AuthenticationRoute;

@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "email":"krishna@gmail.com",
-    "password":"krishna"
+    "password":"radha"
 }
 
 ###
@@ -14,4 +14,14 @@ Content-Type: application/json
     "email":"krishna@gmail.com",
     "password":"krishna",
     "name":"krishna"
+}
+
+
+###
+POST http://localhost:4000/user?forgotPassword=true
+Content-Type: application/json
+
+{
+    "email":"krishna@gmail.com",
+    "newPassword":"radhe"
 }
